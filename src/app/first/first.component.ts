@@ -22,8 +22,8 @@ export class FirstComponent implements OnInit {
   async onClickButton(data)
   {
     console.log(this.textArea);
-   // this.inputS.getUserData(this.textArea).subscribe(response => this.sendData(response));
-   this.sendData(data);
+    this.inputS.getUserData(this.textArea).subscribe(response => this.sendData(response));
+   //this.sendData(data);
    
 
   }
