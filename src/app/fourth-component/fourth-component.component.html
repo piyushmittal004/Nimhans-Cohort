@@ -45,6 +45,14 @@
         
       </ng-container> -->
    
+
+      <ng-container matColumnDef="ADBS_ID"  class="example-item">
+        <th mat-header-cell *matHeaderCellDef>viewLab       </th>
+       
+        <td mat-cell *matCellDef="let element"><button mat-button (click)="onClick(element)">Click Me!!</button> </td>
+        
+      </ng-container>
+   
    
      <!-- <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
