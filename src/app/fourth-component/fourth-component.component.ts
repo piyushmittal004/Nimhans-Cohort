@@ -33,7 +33,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class FourthComponentComponent implements OnInit {
 
   displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_no','p_name','date_of_consent','index_cohort','lab_group','remarks','date_of_assessment','Assessed_by','psw','pdf','consultant_incharge','sociodemography','HOPI','Developmental','physical_exam',
-                                    '"MSE','Life_chart','Treatment','DSM5CC','Pedigree'];
+                                    '"MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S','Document_verified_PDF','viewLab'];
 
   
   dataSource:any;
@@ -60,6 +60,11 @@ export class FourthComponentComponent implements OnInit {
 
   constructor(private TransferS:TransferUserService) {
    console.log(this.dataSource);
+  }
+
+  onClick(data)
+  {
+    console.log(data);
   }
 
   ngOnInit():void {

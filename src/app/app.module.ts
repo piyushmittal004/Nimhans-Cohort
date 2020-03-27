@@ -9,10 +9,11 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import {RouterModule, Routes} from "@angular/router";
 import { ThirdComponent } from './third/third.component';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 import { TransferUserService } from './TransferUserService';
 import { FourthComponentComponent } from './fourth-component/fourth-component.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {ScrollingModule} from '@angular/cdk/scrolling'
 
 
 
@@ -33,7 +34,7 @@ const appRoutes: Routes = [
     FirstComponent,
     SecondComponent,
     ThirdComponent,
-    LoginComponent,
+   // LoginComponent,
     FourthComponentComponent
   ],
   imports: [
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    ScrollingModule,
     RouterModule.forRoot(
       appRoutes,
       { useHash: true }

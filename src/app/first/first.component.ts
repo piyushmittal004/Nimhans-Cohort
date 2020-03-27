@@ -19,18 +19,18 @@ export class FirstComponent implements OnInit {
 
   constructor(private inputS:InputServiceService,private router:Router,private transfer:TransferUserService) { }
 
-  async onClickButton()
+  async onClickButton(data)
   {
     console.log(this.textArea);
-    this.inputS.getUserData(this.textArea).subscribe(response => this.sendData(response));
-   // this.sendData();
+   // this.inputS.getUserData(this.textArea).subscribe(response => this.sendData(response));
+   this.sendData(data);
    
 
   }
-  sendData(response:User[])
+  sendData(response)
   {
     console.log(response);
-    this.transfer.setData(response);
+   // this.transfer.setData(response);
     this.router.navigate(['/breifView',this.textArea]);
 
   }
