@@ -15,7 +15,7 @@ table {
     line-break: unset;
     width: 100%;
     white-space: nowrap;
-    overflow: scroll;
+    overflow:initial;
     vertical-align: middle;
   }
   

@@ -13,7 +13,9 @@ import { ThirdComponent } from './third/third.component';
 import { TransferUserService } from './TransferUserService';
 import { FourthComponentComponent } from './fourth-component/fourth-component.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import {ScrollingModule} from '@angular/cdk/scrolling'
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ViewLabReportComponent } from './view-lab-report/view-lab-report.component'
+import { UserServiceService } from './user-service.service';
 
 
 
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
   { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
   { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
   { path: 'third', component: ThirdComponent, data: { title: 'Third Component' } },
-  {path: 'breifView/:id',component:FourthComponentComponent}
+  {path: 'breifView/:id',component:FourthComponentComponent},
+  {path: 'labView',component:ViewLabReportComponent}
 
 ];
 
@@ -35,7 +38,8 @@ const appRoutes: Routes = [
     SecondComponent,
     ThirdComponent,
    // LoginComponent,
-    FourthComponentComponent
+    FourthComponentComponent,
+   ViewLabReportComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,7 @@ const appRoutes: Routes = [
     )
   ],
 
-  providers: [TransferUserService],
+  providers: [TransferUserService,UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
