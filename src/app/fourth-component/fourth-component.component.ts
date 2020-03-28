@@ -32,10 +32,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class FourthComponentComponent implements OnInit {
 
-  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_no','p_name','date_of_consent','index_cohort','lab_group','remarks','date_of_assessment','Assessed_by','psw','pdf','consultant_incharge','sociodemography','HOPI','Developmental','physical_exam',
-                                    '"MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S','Document_verified_PDF','viewLab'];
+  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_name','date_of_consent','lab_group','remarks','date_of_assessment','sociodemography','HOPI','Developmental','physical_exam',
+                                    'MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S','viewLab','viewOther'];
 
   
+                                    displayedColumns1: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','viewLab'];
   dataSource:any;
    //displayedCol:string[];
  
@@ -65,6 +66,14 @@ export class FourthComponentComponent implements OnInit {
   onClick(data)
   {
     console.log(data);
+  }
+
+  onClick1(data)
+  {
+    alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'+'PSW '+data.psw+
+           '\n'+'PDF '+data.pdf+'\n'+'Consultant Incharge '+data.consultant_incharge+ '\n'+
+              'Document_verified_by '+data.Document_verified_by+'\n'+ 'Date_verified_by '+data.Date_verified_by_pdf
+              +'\n'+ 'Document_verified_by_cohort '+data.Document_verified_by_cohort );
   }
 
   ngOnInit():void {
