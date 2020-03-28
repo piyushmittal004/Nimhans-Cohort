@@ -13,7 +13,7 @@ export class InputServiceService {
 
   constructor(private route:Router, private _http:HttpClient) { }
 
-   private _url:string="https://localhost:8443/search";
+   private _url:string="http://localhost:3000/User";
   getUserData(patientID:number):Observable<User[]>
   {
    let JsonData={'adbsID':[patientID]};

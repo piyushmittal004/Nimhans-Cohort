@@ -1,7 +1,5 @@
-[
-    {"position":1,"name":"Rahul","weight":20.03,"symbol":"Ra"},
-    {"position":2,"name":"Richa","weight":20.03,"symbol":"Ri"},
-    {"position":3,"name":"Piyush","weight":20.03,"symbol":"Pi"},
-    {"position":4,"name":"Rahul","weight":20.03,"symbol":"R"}
+    {
+        "User":[
+        {"ADBS_ID":1,"Assessment_ID":2,"D_no":"D123","Family_no":12,"index_cohort":"Dementia"} ]
+    }
 
-]

@@ -42,6 +42,6 @@ Date_verified_by_cohort:string;
 Comments:string;
  Updated_verification_by:string;
 Update_verification_date:Date;
-viewLab:number;
+//viewLab:number;
 
 }

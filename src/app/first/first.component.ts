@@ -30,7 +30,7 @@ export class FirstComponent implements OnInit {
   sendData(response)
   {
     console.log(response);
-   // this.transfer.setData(response);
+    this.transfer.setData(response);
     this.router.navigate(['/breifView',this.textArea]);
 
   }
