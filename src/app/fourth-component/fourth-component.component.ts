@@ -3,6 +3,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { TransferUserService } from '../TransferUserService';
 import {User} from '../User';
 import { strict } from 'assert';
+import { UserServiceService } from '../user-service.service';
+import { Router } from '@angular/router';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -59,13 +61,16 @@ export class FourthComponentComponent implements OnInit {
   
 };
 
-  constructor(private TransferS:TransferUserService) {
+  constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router) {
    console.log(this.dataSource);
   }
 
   onClick(data)
   {
+    this.UserS.setData(data);
     console.log(data);
+    this.router.navigate(['/labView']);
+
   }
 
   onClick1(data)
