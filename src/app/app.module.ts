@@ -16,8 +16,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { ViewLabReportComponent } from './view-lab-report/view-lab-report.component'
 import { UserServiceService } from './user-service.service';
-
-
+import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatRadioModule} from '@angular/material/radio'; 
 
 
 const appRoutes: Routes = [
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
   { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
   { path: 'third', component: ThirdComponent, data: { title: 'Third Component' } },
   {path: 'breifView/:id',component:FourthComponentComponent},
-  {path: 'labView',component:ViewLabReportComponent}
+  {path: 'labView',component:ViewLabReportComponent},
+  {path: 'DecideDeep',component:DecideDeepTestComponent}
 
 ];
 
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     ThirdComponent,
    // LoginComponent,
     FourthComponentComponent,
-   ViewLabReportComponent
+   ViewLabReportComponent,
+   DecideDeepTestComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,8 @@ const appRoutes: Routes = [
     MaterialModule,
     HttpClientModule,
     ScrollingModule,
+    MatCheckboxModule,
+    MatRadioModule,
     RouterModule.forRoot(
       appRoutes,
       { useHash: true }

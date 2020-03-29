@@ -19,8 +19,18 @@ export class InputServiceService {
    let JsonData={'adbsID':[patientID]};
      const headers = { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODQyMDk1ODksImlhdCI6MTU4NDE3MzU4OX0.mNtaoHSSKwB2LzG-_Fdj8cAXb01G8P-61SNZCzH6V5w'};
      console.log(patientID);
-     // return this._http.get<User[]>(this._url);
-     return this._http.post<User[]>(this._url,JsonData,{headers});
+      return this._http.get<User[]>(this._url);
+    // return this._http.post<User[]>(this._url,JsonData,{headers});
+    
+  }
+
+  getUserDataBrief():Observable<User[]>
+  {
+   //let JsonData={'adbsID':[patientID]};
+     const headers = { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODQyMDk1ODksImlhdCI6MTU4NDE3MzU4OX0.mNtaoHSSKwB2LzG-_Fdj8cAXb01G8P-61SNZCzH6V5w'};
+   //  console.log(patientID);
+      return this._http.get<User[]>(this._url);
+    // return this._http.post<User[]>(this._url,JsonData,{headers});
     
   }
 }
