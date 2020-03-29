@@ -6,7 +6,7 @@ import { TransferUserService } from '../TransferUserService';
 import { BreifViewService } from '../breif-view.service';
 import{UserServiceService} from '../user-service.service';
 import{Router} from '@angular/router';
-
+import{InputServiceService} from '../input-service.service';
 
 export interface PeriodicElement {
   name: string;
@@ -66,10 +66,25 @@ return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().inc
 
 };
 
-constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router) {
-console.log(this.dataSource);
+constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router,private inputS:InputServiceService) {
+  
+ 
+
 }
 
+
+async sendData(response)
+  {
+    console.log(response);
+    this.TransferS.setData(response);
+    user=this.TransferS.getData();
+    console.log("ii");
+    console.log(user);
+    this.dataSource =new MatTableDataSource (user);
+    console.log(this.dataSource);
+  //  this.router.navigate(['/breifView',this.textArea]);
+
+  }
 onClick(data)
 {
 this.UserS.setData(data);
@@ -88,10 +103,7 @@ alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'
 
 ngOnInit():void {
 //displayedCol:string[];
-user=this.TransferS.getData();
-console.log("ii");
-console.log(user);
-this.dataSource =new MatTableDataSource (user);
+this.inputS.getUserDataBrief().subscribe(response => this.sendData(response));
 let i;
 //this.displayedColumns=Object.keys(user)
 
