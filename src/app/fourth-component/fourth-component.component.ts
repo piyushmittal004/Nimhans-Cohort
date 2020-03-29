@@ -75,10 +75,10 @@ export class FourthComponentComponent implements OnInit {
 
   onClick1(data)
   {
-    alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'+'PSW '+data.psw+
+    alert('Patient Number '+ data.p_no+'\n'+'Assessed By '+data.assessed_by+'\n'+'PSW '+data.psw+
            '\n'+'PDF '+data.pdf+'\n'+'Consultant Incharge '+data.consultant_incharge+ '\n'+
-              'Document_verified_by '+data.Document_verified_by+'\n'+ 'Date_verified_by '+data.Date_verified_by_pdf
-              +'\n'+ 'Document_verified_by_cohort '+data.Document_verified_by_cohort );
+              'Document_verified_by '+data.document_verified_by_pdf+'\n'+ 'Date_verified_by '+data.date_verified_by_pdf
+              +'\n'+ 'Document_verified_by_cohort '+data.document_verified_by_cohort );
   }
 
   ngOnInit():void {
