@@ -7,3 +7,15 @@
 <button mat-button (click)="onClickPBMNC()">PBMNC Report</button>
 <button mat-button  (click)="onClickKyrotyping()">Kyrotyping Report</button>
 <button mat-button  (click)="onClickGeneprint()">Geneprint Report</button>
+
+<div *ngIf=LCL >
+    <p>You have clicked LCL</p>
+    <button mat-button (click)="LCL=!LCL" >Close</button> 
+</div>
+
+
+<div *ngIf=DNA >
+    <p>You have clicked LCL</p>
+    <button mat-button (click)="DNA=!DNA" >Close</button> 
+</div>
+

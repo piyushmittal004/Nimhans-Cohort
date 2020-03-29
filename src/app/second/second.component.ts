@@ -4,6 +4,8 @@ import { DataSource } from '@angular/cdk/table';
 import {User} from '../User';
 import { TransferUserService } from '../TransferUserService';
 import { BreifViewService } from '../breif-view.service';
+import{UserServiceService} from '../user-service.service';
+import{Router} from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -37,44 +39,70 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class SecondComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_no','p_name','date_of_consent','index_cohort','lab_group','remarks','date_of_assessment','Assessed_by','psw','pdf','consultant_incharge','sociodemography','HOPI','Developmental','physical_exam',
-  '"MSE','Life_chart','Treatment','DSM5CC','Pedigree'];
+  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_name','date_of_consent','lab_group','remarks','date_of_assessment','sociodemography','HOPI','Developmental','physical_exam',
+  'MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S','viewLab','viewOther'];
 
-  dataSource;
 
-  /**setupFilter(column: string) {
-    this.dataSource.filterPredicate = (d: dataSource, filter: string) => {
-      const textToSearch = d[column] && d[column].toLowerCase() || '';
-      return textToSearch.indexOf(filter) !== -1;
-    };
-  }*/
-  
-  applyFilter(filtervalue: string){
-   this.dataSource.filter= filtervalue.trim().toLowerCase();
-    
-  
-  
- /**  this.dataSource.filterPredicate = function(data, filter: string): boolean {
-    return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().includes(filter) || data.position.toString().includes(filter);
-  }*/
-  
+  displayedColumns1: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','viewLab'];
+dataSource:any;
+//displayedCol:string[];
+
+
+/**setupFilter(column: string) {
+this.dataSource.filterPredicate = (d: dataSource, filter: string) => {
+const textToSearch = d[column] && d[column].toLowerCase() || '';
+return textToSearch.indexOf(filter) !== -1;
+};
+}*/
+
+applyFilter(filtervalue: string){
+this.dataSource.filter= filtervalue.trim().toLowerCase();
+
+
+
+/**  this.dataSource.filterPredicate = function(data, filter: string): boolean {
+return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().includes(filter) || data.position.toString().includes(filter);
+}*/
+
 };
 
-  constructor(private TransferS:TransferUserService,private brief:BreifViewService) {
-   
-  }
+constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router) {
+console.log(this.dataSource);
+}
 
-  sendData(response:User[])
-  {
-    console.log("ii");
-    console.log(response);
-    this.dataSource =new MatTableDataSource (response);
-  }
+onClick(data)
+{
+this.UserS.setData(data);
+console.log(data);
+this.router.navigate(['/labView']);
 
-  ngOnInit():void {
-  
-   let data=[];
-    this.brief.getUserData().subscribe(response =>this.sendData(response));
-   
-  }
+}
+
+onClick1(data)
+{
+alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'+'PSW '+data.psw+
+'\n'+'PDF '+data.pdf+'\n'+'Consultant Incharge '+data.consultant_incharge+ '\n'+
+'Document_verified_by '+data.Document_verified_by+'\n'+ 'Date_verified_by '+data.Date_verified_by_pdf
++'\n'+ 'Document_verified_by_cohort '+data.Document_verified_by_cohort );
+}
+
+ngOnInit():void {
+//displayedCol:string[];
+user=this.TransferS.getData();
+console.log("ii");
+console.log(user);
+this.dataSource =new MatTableDataSource (user);
+let i;
+//this.displayedColumns=Object.keys(user)
+
+// let x=[];
+//  i=0;
+// Object.keys(user).forEach(function(key) {
+//   x[i]=key;
+//   i=i+1;
+// })
+// this.displayedCol=x;
+// console.log(this.displayedCol);
+
+}
 }
