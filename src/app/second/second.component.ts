@@ -73,7 +73,7 @@ constructor(private TransferS:TransferUserService,private UserS:UserServiceServi
 }
 
 
-async sendData(response)
+ sendData(response)
   {
     console.log(response);
     this.TransferS.setData(response);

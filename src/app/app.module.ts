@@ -18,12 +18,15 @@ import { ViewLabReportComponent } from './view-lab-report/view-lab-report.compon
 import { UserServiceService } from './user-service.service';
 import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
-import {MatRadioModule} from '@angular/material/radio'; 
+import {MatRadioModule} from '@angular/material/radio';
+import { FilteringComponent } from './filtering/filtering.component'; 
+import {MatSelectModule} from '@angular/material/select';
 
 
 const appRoutes: Routes = [
   { path: '', component: FirstComponent, data: { title: 'First Component' } },
   { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
+  { path: 'filter', component: FilteringComponent, data: { title: 'Filtering Component' } },
   { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
   { path: 'third', component: ThirdComponent, data: { title: 'Third Component' } },
   {path: 'breifView/:id',component:FourthComponentComponent},
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
    // LoginComponent,
     FourthComponentComponent,
    ViewLabReportComponent,
-   DecideDeepTestComponent
+   DecideDeepTestComponent,
+   FilteringComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ const appRoutes: Routes = [
     ScrollingModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatSelectModule,
     RouterModule.forRoot(
       appRoutes,
       { useHash: true }
