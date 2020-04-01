@@ -7,6 +7,7 @@ import { BreifViewService } from '../breif-view.service';
 import{UserServiceService} from '../user-service.service';
 import{Router} from '@angular/router';
 import{InputServiceService} from '../input-service.service';
+import { ColFilterService } from '../col-filter.service';
 
 export interface PeriodicElement {
   name: string;
@@ -66,7 +67,7 @@ return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().inc
 
 };
 
-constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router,private inputS:InputServiceService) {
+constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router,private inputS:InputServiceService,private colS:ColFilterService) {
   
  
 
@@ -103,7 +104,12 @@ alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'
 
 ngOnInit():void {
 //displayedCol:string[];
+if(this.colS.getData()==null)
 this.inputS.getUserDataBrief().subscribe(response => this.sendData(response));
+else
+{
+  this.inputS.getBreifTable(this.colS.getData()).subscribe(response => this.sendData(response));
+}
 let i;
 //this.displayedColumns=Object.keys(user)
 

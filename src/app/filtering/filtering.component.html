@@ -8,28 +8,30 @@
 
 <p>You have selected: {{selected}}</p>
 
-<div *ngIf="selected==table[0]">
+
+<div *ngIf="selected==table[0]"  >
+ 
     <mat-form-field>
         <mat-label>Select an option</mat-label>
-        <mat-select [(value)]="select">
+        <mat-select [(value)]="select" >
           <mat-option>None</mat-option>
-          <mat-option value="Sociodemography">Sociodemography</mat-option>
-          <mat-option value="HOPI">HOPI</mat-option>
-          <mat-option value="Developmental">Developmental</mat-option>
-          <mat-option value="Age">Age</mat-option>
+          <mat-option value="sociodemography">Sociodemography</mat-option>
+          <mat-option value="hopi"  >HOPI</mat-option>
+          <mat-option value="developmental"  >Developmental</mat-option>
+          <mat-option value="age"  >Age</mat-option>
         </mat-select>
       </mat-form-field>
 
       
       <p>You selected: {{select}}</p>
-
+    
       <div *ngIf="select==listCol[0]||select==listCol[1]||select==listCol[2]" >
         <mat-form-field>
             <mat-label>Select an option</mat-label>
-            <mat-select [(value)]="selectTest" required>
-              <mat-option>None</mat-option>
-              <mat-option value="Completed">Completed</mat-option>
-              <mat-option value="Incomplete">Incomplete</mat-option>
+            <mat-select [(value)]="selectTest" required >
+              <mat-option  >None</mat-option>
+              <mat-option  value="true">Completed</mat-option>
+              <mat-option   value= "false" >Incomplete</mat-option>
               
             </mat-select>
           </mat-form-field>
@@ -39,25 +41,39 @@
       <div *ngIf="select==listCol[3]" >
         <mat-form-field>
             <mat-label>Select an option</mat-label>
-            <mat-select [(value)]="selectTest">
-              <mat-option>None</mat-option>
-              <mat-option value="greater than"> greater than</mat-option>
-              <mat-option value="Smaller than">Smaller than</mat-option>
+            <mat-select [(value)]="selectTest"  >
+              <mat-option  >None</mat-option>
+              <mat-option   value="<=" > greater than</mat-option>
+              <mat-option  value="<=" >Smaller than</mat-option>
              
             </mat-select>
-
+              <br>
+              <br>
             <mat-label>Select value</mat-label>
             <mat-select [(value)]="num" >
-                <mat-option *ngFor="let k of numbers"  value={{k}} >{{k}}</mat-option>
+                <mat-option *ngFor="let k of numbers"   value={{k}} >{{k}}</mat-option>
             </mat-select>
           </mat-form-field>
           
       </div>
       <p>You selected: {{selectTest}}</p>
       <p>You selected: {{num}}</p>
+    
 </div>
 
-<button mat-button (click)="onClick()">Add more filters</button>
+<button mat-button    (click)="onClick()"  >Add more filters</button>
 
 
 <button mat-button (click)="onClickSave()">See Results!!</button>
+<!-- 
+
+ <form #userForm="ngForm">
+
+
+  {{userForm.value |json}}
+  <div class="form-control">
+    <input type="text"  required class="form-control"  #name=ngModel name="name"   [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="name_list" ngModel>
+    <small class="text-danger" [class.d-none]=" name.untouched">Name is required</small>
+  </div>
+    
+</form> -->

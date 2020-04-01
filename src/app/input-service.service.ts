@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import '../assets/dummy.json';
 import { Observable } from 'rxjs';
 import {User} from './User';
+import { RowFilter } from './filtering/RowFilter';
 
 
 @Injectable({
@@ -32,5 +33,15 @@ export class InputServiceService {
       return this._http.get<User[]>(this._url);
     // return this._http.post<User[]>(this._url,JsonData,{headers});
     
+  }
+
+  getBreifTable(data:string):Observable<User[]>
+  {
+    let _url1:string="http://localhost:3000/User";
+  //  let JsonData={'adbsID':[patientID]};
+     const headers = { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODQyMDk1ODksImlhdCI6MTU4NDE3MzU4OX0.mNtaoHSSKwB2LzG-_Fdj8cAXb01G8P-61SNZCzH6V5w'};
+     console.log(data);
+     // return this._http.get<User[]>(this._url);
+     return this._http.post<User[]>(_url1,data,{headers});
   }
 }

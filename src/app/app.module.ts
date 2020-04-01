@@ -21,6 +21,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { FilteringComponent } from './filtering/filtering.component'; 
 import {MatSelectModule} from '@angular/material/select';
+import { RowFilter } from './filtering/RowFilter';
 
 
 const appRoutes: Routes = [
@@ -65,7 +66,7 @@ const appRoutes: Routes = [
     )
   ],
 
-  providers: [TransferUserService,UserServiceService],
+  providers: [TransferUserService,UserServiceService,RowFilter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
