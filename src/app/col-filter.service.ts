@@ -7,14 +7,14 @@ import { RowFilter } from './filtering/RowFilter';
 export class ColFilterService {
 
   constructor() { }
-  userList:RowFilter;
+  userList:string;
 
-  setData(data:RowFilter)
+  setData(data:string)
   {
     this.userList=data;
   }
 
-  getData():RowFilter
+  getData():string
   {
     let d=this.userList;
     this.userList=null;

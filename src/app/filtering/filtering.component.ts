@@ -30,6 +30,8 @@ export class FilteringComponent implements OnInit {
     {
       this.numbers[i]=i;
     }
+    //this.num=null;
+    
    }
 
    onClick()
@@ -47,7 +49,7 @@ export class FilteringComponent implements OnInit {
      
      else
      {
-      this.concanted=this.concanted+' '+this.select+' '+this.selectTest;
+      this.concanted=this.concanted+' '+this.select+'='+this.selectTest;
       if(this.select==this.listCol[0])
       {
         if(this.selectTest=='T')
@@ -94,15 +96,23 @@ export class FilteringComponent implements OnInit {
    {
     if(this.num!=undefined&&this.num!=null)
     this.concanted=this.concanted+' '+this.select+' '+this.selectTest+' '+ this.num;
-    else
-    this.concanted=this.concanted+' '+this.select+' '+this.selectTest;
+    else if(this.select!=null)
+    this.concanted=this.concanted+' '+this.select+'='+this.selectTest;
     this.num=null;
+    this.concanted='select * from brief where '+this.concanted;
        console.log(this.selected+' '+this.concanted);
        console.log(this.rowUser.developmental);
+             
+       this.userList.setData(this.concanted);
+      // this.inputS.getBreifTable(this.userList.getData()).subscribe(response => console.log(response));
 
-       this.userList.setData(this.rowUser);
-       this.inputS.getBreifTable(this.userList.getData()).subscribe(response => console.log(response));
 
+       this.selected=null;
+             this.selectTest=null;
+             this.select=null;
+             this.concanted='';
+
+             this.router.navigate(['/second']);
    }
   
   ngOnInit(): void {

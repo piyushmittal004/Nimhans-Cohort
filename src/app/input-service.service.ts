@@ -35,7 +35,7 @@ export class InputServiceService {
     
   }
 
-  getBreifTable(data:RowFilter):Observable<User[]>
+  getBreifTable(data:string):Observable<User[]>
   {
     let _url1:string="http://localhost:3000/User";
   //  let JsonData={'adbsID':[patientID]};
