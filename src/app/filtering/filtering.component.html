@@ -14,18 +14,22 @@
     <mat-form-field>
         <mat-label>Select an option</mat-label>
         <mat-select [(value)]="select" >
-          <mat-option>None</mat-option>
+          <mat-option value="None" >None</mat-option>
           <mat-option value="sociodemography">Sociodemography</mat-option>
           <mat-option value="hopi"  >HOPI</mat-option>
           <mat-option value="developmental"  >Developmental</mat-option>
           <mat-option value="age"  >Age</mat-option>
+          <mat-option value="mse"  >MSE</mat-option>
+          <mat-option value="life_chart"  >Life_Chart</mat-option>
+          <mat-option value="treatment"  >Treatment</mat-option>
+          <mat-option value="pedigree"  >Pedigree</mat-option>
         </mat-select>
       </mat-form-field>
 
       
       <p>You selected: {{select}}</p>
     
-      <div *ngIf="select==listCol[0]||select==listCol[1]||select==listCol[2]" >
+      <div *ngIf="select!=listCol[8]&&select!=listCol[3]" >
         <mat-form-field>
             <mat-label>Select an option</mat-label>
             <mat-select [(value)]="selectTest" required >

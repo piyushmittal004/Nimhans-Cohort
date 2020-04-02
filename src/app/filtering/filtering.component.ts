@@ -23,7 +23,7 @@ export class FilteringComponent implements OnInit {
     this.rowUser=new RowFilter;
     this.name_list='';
     this.table=['Brief','Deep'];
-    this.listCol=['sociodemography','hopi','developmental','age'];
+    this.listCol=['sociodemography','hopi','developmental','age','mse','life_chart','treatment','pedigree','None'];
     let i:number;
     //this.numbers=new Array[100];
     for(i=1;i<100;i++)
@@ -36,7 +36,7 @@ export class FilteringComponent implements OnInit {
 
    onClick()
    {
-     
+   //  console.log(this.rowUser[0]);
      if(this.num!=undefined&&this.num!=null)
      {
       this.concanted=this.concanted+' '+this.select+' '+this.selectTest+' '+ this.num;
@@ -80,6 +80,7 @@ export class FilteringComponent implements OnInit {
         {
           this.rowUser.developmental=false;
         }
+        
       }
      
      }
@@ -111,7 +112,7 @@ export class FilteringComponent implements OnInit {
              this.selectTest=null;
              this.select=null;
              this.concanted='';
-
+           console.log(this.userList.getData());
              this.router.navigate(['/second']);
    }
   

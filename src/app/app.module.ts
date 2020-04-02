@@ -22,6 +22,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { FilteringComponent } from './filtering/filtering.component'; 
 import {MatSelectModule} from '@angular/material/select';
 import { RowFilter } from './filtering/RowFilter';
+import { ColFilterService } from './col-filter.service';
 
 
 const appRoutes: Routes = [
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
     )
   ],
 
-  providers: [TransferUserService,UserServiceService,RowFilter],
+  providers: [TransferUserService,UserServiceService,RowFilter,ColFilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
