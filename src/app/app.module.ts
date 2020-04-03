@@ -23,6 +23,7 @@ import { FilteringComponent } from './filtering/filtering.component';
 import {MatSelectModule} from '@angular/material/select';
 import { RowFilter } from './filtering/RowFilter';
 import { ColFilterService } from './col-filter.service';
+import { Status } from './status';
 
 
 const appRoutes: Routes = [
@@ -67,7 +68,7 @@ const appRoutes: Routes = [
     )
   ],
 
-  providers: [TransferUserService,UserServiceService,RowFilter,ColFilterService],
+  providers: [TransferUserService,UserServiceService,RowFilter,ColFilterService,Status],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
