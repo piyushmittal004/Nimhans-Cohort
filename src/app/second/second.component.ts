@@ -104,13 +104,11 @@ alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'
 
 ngOnInit():void {
 //displayedCol:string[];
-console.log(this.colS.getData());
 if(this.colS.getData()==null)
 this.inputS.getUserDataBrief().subscribe(response => this.sendData(response));
 else
 {
   this.inputS.getBreifTable(this.colS.getData()).subscribe(response => this.sendData(response));
-  this.colS.setData(null);
 }
 let i;
 //this.displayedColumns=Object.keys(user)
