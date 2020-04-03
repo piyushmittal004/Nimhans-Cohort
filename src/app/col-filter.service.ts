@@ -17,7 +17,7 @@ export class ColFilterService {
   getData():string
   {
     let d=this.userList;
-   // this.userList=null;
+    this.userList=null;
     return d;
   }
 }

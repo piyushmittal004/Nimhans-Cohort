@@ -69,6 +69,7 @@ const appRoutes: Routes = [
   ],
 
   providers: [TransferUserService,UserServiceService,RowFilter,ColFilterService,Status],
+  providers: [TransferUserService,UserServiceService,RowFilter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
