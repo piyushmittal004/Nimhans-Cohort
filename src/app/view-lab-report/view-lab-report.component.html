@@ -2,13 +2,13 @@
 
 <p>Your ADBS ID is: </p>
 <div>{{data.ADBS_ID}}</div>
-<button mat-button (click)="onClickLCL()">LCL Report</button>
+<button mat-button  #op1 (click)="onClickLCL()">LCL Report</button>
 <button mat-button (click)="onClickDNA()">DNA Report</button>
 <button mat-button (click)="onClickPBMNC()">PBMNC Report</button>
 <button mat-button  (click)="onClickKyrotyping()">Kyrotyping Report</button>
 <button mat-button  (click)="onClickGeneprint()">Geneprint Report</button>
 
-<div *ngIf=LCL >
+<!-- <div *ngIf=LCL >
     <p>You have clicked LCL</p>
     <button mat-button (click)="LCL=!LCL" >Close</button> 
 </div>
@@ -17,7 +17,7 @@
 <div *ngIf=DNA >
     <p>You have clicked LCL</p>
     <button mat-button (click)="DNA=!DNA" >Close</button> 
-</div>
+</div> -->
 
 <button mat-button (click)="onDecide()">Decide Deep Test!!</button>
 
