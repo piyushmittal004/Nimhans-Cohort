@@ -4,4 +4,5 @@ export class RowFilter{
     developmental:boolean;
     age:number;
     sign:string;
+    
 }
