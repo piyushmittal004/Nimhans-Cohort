@@ -1,12 +1,12 @@
 export class Status {
 
     Assessment_ID:number;
-    D_No:string;
-    Sample_no:number;
-    LCL_Status:number;
-    DNA_Status:number;
-    PBMNC_Status:number;
-    Kyrotyping_Status:number;
-    Geneprint_Status:number;
+    d_no:string;
+    sample_no:number;
+    lcl_Status:number;
+    dna_Status:number;
+    pbmnc_Status:number;
+    kyrotyping_Status:number;
+    geneprint_Status:number;
 
 }

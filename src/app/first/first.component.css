@@ -26,3 +26,30 @@ button {
 
 }
 
+.example-container {
+    height: 800px;
+    width: 800px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 700px;
+  }
+  
+  td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+  }
+  
+  th.mat-column-position, td.mat-column-position {
+    padding-left: 8px;
+  }
+  
+  .mat-table:first-child {
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .mat-table:last-child {
+    border-left: 1px solid #e0e0e0;
+  }
+

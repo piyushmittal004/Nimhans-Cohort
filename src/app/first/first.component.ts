@@ -3,7 +3,8 @@ import {User} from  '../User'
 import { InputServiceService } from '../input-service.service';
 import { Router } from '@angular/router';
 import { TransferUserService } from '../TransferUserService';
-
+import {MatTableDataSource} from '@angular/material/table';
+import { Dashboard } from '../Dashboard'
 
 
 @Component({
@@ -14,10 +15,13 @@ import { TransferUserService } from '../TransferUserService';
 export class FirstComponent implements OnInit {
    textArea:number;
    user:User[];
-  
+   dataSource;
 
+  displayedColumns:string[];
+  constructor(private inputS:InputServiceService,private router:Router,private transfer:TransferUserService) {
+   this.displayedColumns = ['Brief','Deep','Dementia','Addiction','Bipolar','OCD','Schizophrenia','Population'];
 
-  constructor(private inputS:InputServiceService,private router:Router,private transfer:TransferUserService) { }
+   }
 
   async onClickButton(data)
   {
@@ -36,6 +40,26 @@ export class FirstComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.fetchData();
   }
 
+
+  async fetchData()
+  {
+    let message=await this.dummy();
+    this.dataSource =new MatTableDataSource (message);
+  }
+
+  dummy():Promise<Dashboard[]>
+  {
+    const hasError: any = false;
+    let promise=new Promise<Dashboard[]>((resolve,reject) =>this.inputS.getDashboardData().subscribe(response => { if(hasError) {
+      reject();
+    } else {
+      resolve(response);
+    }})
+    );
+    return promise;
+  }
 }

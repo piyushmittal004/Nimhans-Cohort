@@ -8,6 +8,7 @@ import{UserServiceService} from '../user-service.service';
 import{Router} from '@angular/router';
 import{InputServiceService} from '../input-service.service';
 import { ColFilterService } from '../col-filter.service';
+import {Status} from '../status';
 
 export interface PeriodicElement {
   name: string;
@@ -39,13 +40,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SecondComponent implements OnInit {
 
+  color:string[]=["blue","red","yellow","green"];
+  isSocio:boolean;
+  isTest:boolean;
+  isLab:boolean;
+  isOther:boolean;
+  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_name','date_of_consent','lab_group','remarks','date_of_assessment','viewLab','viewOther','EditDetails'];
+ 
 
-  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_name','date_of_consent','lab_group','remarks','date_of_assessment','sociodemography','HOPI','Developmental','physical_exam',
-  'MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S','viewLab','viewOther'];
 
-
-  displayedColumns1: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','viewLab'];
+  displayedColumns1: string[] = ['ADBS_ID', 'Assessment_ID', 'sociodemography','HOPI','Developmental','physical_exam',
+  'MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S'];
 dataSource:any;
+displayedColumns2: string[]=['DNO','LCL','DNA'];
 //displayedCol:string[];
 
 
@@ -68,7 +75,10 @@ return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().inc
 };
 
 constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router,private inputS:InputServiceService,private colS:ColFilterService) {
-  
+  this.isLab=false;
+  this.isOther=false;
+  this.isSocio=false;
+  this.isTest=false;
  
 
 }
@@ -81,6 +91,7 @@ constructor(private TransferS:TransferUserService,private UserS:UserServiceServi
     user=this.TransferS.getData();
     console.log("ii");
     console.log(user);
+    console.log(user[0].assessment_ID);
     this.dataSource =new MatTableDataSource (user);
     console.log(this.dataSource);
   //  this.router.navigate(['/breifView',this.textArea]);
@@ -102,13 +113,21 @@ alert('Patient Number '+ data.p_number+'\n'+'Assessed By '+data.Assessed_by+'\n'
 +'\n'+ 'Document_verified_by_cohort '+data.Document_verified_by_cohort );
 }
 
+onEdit(data)
+{
+  this.UserS.setData(data);
+  this.router.navigate(['/updateDetails']);
+}
+
 ngOnInit():void {
 //displayedCol:string[];
+console.log(this.colS.getData());
 if(this.colS.getData()==null)
 this.inputS.getUserDataBrief().subscribe(response => this.sendData(response));
 else
 {
   this.inputS.getBreifTable(this.colS.getData()).subscribe(response => this.sendData(response));
+  this.colS.setData(null);
 }
 let i;
 //this.displayedColumns=Object.keys(user)
@@ -123,4 +142,39 @@ let i;
 // console.log(this.displayedCol);
 
 }
+
+onSociodemo()
+{
+  this.dataSource= new MatTableDataSource(user);
+  this.isSocio=!this.isSocio;
 }
+
+onTest()
+{
+  this.dataSource= new MatTableDataSource(user);
+   this.isTest=!this.isTest;
+}
+
+onOtherDetails()
+{
+   this.isOther=!this.isOther;
+}
+
+onLabStatus()
+{
+  this.isLab=!this.isLab;
+  this.inputS.getLabStatusDetails().subscribe(response => this.fetchData(response),err => console.log(err));
+
+
+}
+
+fetchData(response:Status[])
+{
+  console.log(response);
+   this.dataSource= new MatTableDataSource(response);
+}
+
+
+}
+
+

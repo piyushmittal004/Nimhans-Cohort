@@ -111,7 +111,7 @@ export class FilteringComponent implements OnInit {
              this.selectTest=null;
              this.select=null;
              this.concanted='';
-
+            console.log(this.userList.getData());
              this.router.navigate(['/second']);
    }
   

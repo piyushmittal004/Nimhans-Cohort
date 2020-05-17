@@ -1,15 +1,15 @@
 
-export interface User{
+export class User{
     //  position:number;
     //  name:string;
     //  weight:number;
     //  symbol:string;
 
 
-ADBS_ID:number;
- Assessment_ID:number;
- D_no:string;
- Family_no:number;
+adbs_ID:number;
+ assessment_ID:number;
+ d_no:string;
+ family_no:number;
 p_no:number;
  p_name:string;
 date_of_consent:Date;
@@ -17,13 +17,13 @@ date_of_consent:Date;
 lab_group:string;
 remarks:string;
 date_of_assessment:Date;
-Assessed_by:String;
+assessed_by:String;
 psw:String;
 pdf:String;
 consultant_incharge:String;
 sociodemography:boolean;
- HOPI:boolean;
-Developmental:boolean;
+ hopi:boolean;
+developmental:boolean;
 physical_exam:boolean;
  MSE:boolean;
 Life_chart:boolean;

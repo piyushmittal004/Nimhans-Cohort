@@ -24,6 +24,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { RowFilter } from './filtering/RowFilter';
 import { ColFilterService } from './col-filter.service';
 import { Status } from './status';
+import { Deep } from './Deep';
+import { UpdateBriefComponent } from './update-brief/update-brief.component';
 
 
 const appRoutes: Routes = [
@@ -34,8 +36,8 @@ const appRoutes: Routes = [
   { path: 'third', component: ThirdComponent, data: { title: 'Third Component' } },
   {path: 'breifView/:id',component:FourthComponentComponent},
   {path: 'labView',component:ViewLabReportComponent},
-  {path: 'DecideDeep',component:DecideDeepTestComponent}
-
+  {path: 'DecideDeep',component:DecideDeepTestComponent},
+  {path: 'updateDetails', component:UpdateBriefComponent}
 ];
 
 
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     FourthComponentComponent,
    ViewLabReportComponent,
    DecideDeepTestComponent,
-   FilteringComponent
+   FilteringComponent,
+   UpdateBriefComponent
   ],
   imports: [
     BrowserModule,
@@ -68,8 +71,7 @@ const appRoutes: Routes = [
     )
   ],
 
-  providers: [TransferUserService,UserServiceService,RowFilter,ColFilterService,Status],
-  providers: [TransferUserService,UserServiceService,RowFilter],
+  providers: [TransferUserService,UserServiceService,RowFilter,ColFilterService,Status,Deep],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

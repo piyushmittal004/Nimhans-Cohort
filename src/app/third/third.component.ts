@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { Deep } from '../Deep';
+import { InputServiceService } from '../input-service.service';
 
 export interface PeriodicElement {
   name: string;
@@ -28,20 +30,49 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ThirdComponent implements OnInit {
 
-displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource =new MatTableDataSource (ELEMENT_DATA);
+
+  data:Deep[];
+  dataSource;
+displayedColumns: string[] = ['h','i','n','o','v','w',
+      'x','y','z','aa','ab','ac','ad','ae','af','ag','ah','ai','aj','ak','al','am','an','id','ass_id'];
+  
 
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().includes(filter) || data.position.toString().includes(filter);
+      return data.o.toLowerCase().includes(filter) || data.n.toLowerCase().includes(filter) || data.v.toString().includes(filter);
   };
   
   }
 
-  constructor() { }
+  constructor(private inputS:InputServiceService) {
 
-  ngOnInit(): void {
+    
+   }
+
+   ngOnInit(): void {
+
+     this.fetchTable();
+  }
+
+  async fetchTable()
+  {
+    this.data=await this.dummy();
+    console.log(this.data);
+    this.dataSource =new MatTableDataSource (this.data);
+  }
+
+  dummy():Promise<Deep[]>
+  {
+    const hasError: any = false;
+    let promise=new Promise<Deep[]>((resolve,reject) =>this.inputS.getCompleteDeepTable().subscribe(response => { if(hasError) {
+      reject();
+    } else {
+      resolve(response);
+    }})
+    );
+    return promise;
+
   }
 
 }
